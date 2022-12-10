@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+$background: #0D0D0F;
+$color: #EFF0F2;
+$primary-color: #F6B130;
+$second-color: rgba(255,255,255,.9);
+$font: 'Lato', sans-serif;
+$second-bg: #161622;
+$border-color: #27272F;
+$rgba-color: rgba(255,255,255, .6);
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  font-family: $font;
+  color: $color;
+  font-weight: 400;
+}
+
+img{
+  pointer-events: none;
+}
+
+::-webkit-scrollbar{
+  background: $background;
+  width: 16px;
+}
+::-webkit-scrollbar-thumb{
+  background: $border-color;
+  border-radius: 9999px;
+  border: 5px solid $background;
+  transition: all .3s;
+}
+::-webkit-scrollbar-thumb:hover{
+  background: #333337;
+}
+
+body{
+  background-color: $background;
+}
+
+.app{
+  background-color: $background;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.page{
+  padding-top: 85px;
+}
+
+.admin-page{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  .admin-container{
+    margin-top: -5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    input{
+      margin: 1rem;
+      padding: .5rem .9rem;
+      background: $second-bg;
+      color: $color;
+      font-size: 16px;
+
+      &::placeholder{
+        color: rgba(255,255,255,.6);
+      }
+    }
+
+    .submit{
+      margin-top: 1rem;
+      cursor: pointer;
+      background: $second-bg;
+      padding: .6rem 1.8rem;
+      border-radius: 22px;
+    }
+  }
+}

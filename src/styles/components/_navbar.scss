@@ -1,0 +1,161 @@
+.navigation-bar{
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(13, 13, 15, 0.8) 90%, rgba(255,255,255,0) 100%);
+
+  .navbar{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .nav-logo{
+    left: 3rem;
+    position: absolute;
+
+    a{
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: -3.8px;
+      padding: 5px;
+      transition: all .3s;
+
+      &:hover{
+        opacity: .8;
+      }
+    }
+  }
+
+  .navigation-link{
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .nav-link{
+      position: relative;
+      margin: 0 5px;
+      padding: 8px 25px;
+      transition: .5s;
+      z-index: 1;
+
+      p{
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: -.5px;
+        transition: .3s;
+        margin-top: 4px;
+        color: $rgba-color;
+      }
+
+      &:before{
+        content: '';
+        width: 0;
+        height: 3px;
+        bottom: 5px;
+        left: 0;
+        bottom: -3px;
+        z-index: 0;
+        position: absolute;
+        background: $border-color;
+        transition: all 0.3s ease-in-out;
+        border-radius: 0px 0px 5px 5px;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $second-bg;
+        border-radius: 5px 5px 0px 0px;
+        transform: scale(0);
+        opacity: 0;
+        transition: .3s;
+        z-index: -1;
+      }
+
+      &:hover {
+        p{
+          color: $color;
+        }
+        
+        &:before {
+          width: 100%;
+        }
+        &:after {
+          transform: scaleY(1);
+          opacity: .9;
+        }
+      }
+
+      &.active{
+        p{
+          color: $color;
+        }
+      }
+    }
+  }
+
+  .search-bar{
+    right: 2.5rem;
+    position: absolute;
+
+    .search-container{
+      position: relative;
+      
+      input{
+        background-color: $second-bg;
+        padding: 12px 38px 12px 22px;
+        border-radius: 22px;
+        color: $color;
+        letter-spacing: .5px;
+        font-size: 13px;
+        width: 14rem;
+        border: 1px solid $border-color;
+        max-height: 42px;
+        
+        &::placeholder{
+          color: $rgba-color;
+          letter-spacing: .4px;
+          font-size: 12.5px;
+        }
+      }
+
+      .search-icon{
+        position: absolute;
+        right: .2rem;
+        top: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateY(-50%);
+        cursor: pointer;
+        height: 35px;
+        width: 35px;
+        border-radius: 9999px;
+
+        svg{
+          opacity: .7;
+          font-size: 14px;
+          transition: .3s;
+        }
+
+        &:hover{
+          svg{
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}

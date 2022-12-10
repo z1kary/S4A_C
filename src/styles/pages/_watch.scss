@@ -1,0 +1,276 @@
+.watch-page{
+  margin: 0px 3rem;
+  padding-top: 100px;
+
+  .modal-wrapper{
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    position: fixed;
+    background-color: rgba(0,0,0, .6);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .modal-container{
+      width: 35%;
+      min-height: 40vh;
+      background-color: $second-bg;
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 2.5rem;
+      border-radius: 22px;
+
+      h3{
+        font-size: 19px;
+        margin-bottom: 1rem;
+      }
+
+      .input-report{
+        margin-top: .7rem;
+        background: $border-color;
+        padding: .4rem .6rem;
+        max-width: 100%;
+      }
+
+      .input-container{
+        display: flex;
+        align-items: center;
+        padding: .5rem 0;
+        cursor: pointer;
+        
+        input[type=radio] {
+          display:none;
+        }
+      
+        input[type="radio"] + span {
+          display:inline-block;
+          width:18px;
+          height:18px;
+          margin-right: .7rem;
+          background-color: $second-bg;
+          border: 2px solid $color;
+          border-radius: 9999px;
+          // overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all .2s;
+        }
+    
+        input[type="radio"] + span div {
+          transition: all .2s;
+          background-color: $second-bg;
+        }
+    
+        input[type="radio"]:checked + span {
+          border-color: $primary-color;
+        }
+      
+        input[type="radio"]:checked + span div {
+          background-color: $primary-color;
+          height: 10px;
+          width: 10px;
+          border-radius: 9999px;
+        }
+    
+        p{
+          color: rgba(239, 239, 241, .9);
+          font-size: 14px;
+        }
+      }
+
+      .submit-btn-container{
+        margin-top: auto;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: .5rem;
+        
+        .submit-btn{
+          background: $border-color;
+          padding: .5rem 1.4rem;
+          border-radius: 22px;
+          cursor: pointer;
+          margin-top: 1rem;
+        }
+      }
+    }
+  }
+
+  .watch-top-page{
+    display: flex;
+  }
+
+  .watch-bot{
+    width: 69%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    .title{
+      display: flex;
+      margin-top: 1.7rem;
+      margin-bottom: 1rem;
+      font-size: 22px;
+      align-items: center;
+
+      .report-btn{
+        margin-left: auto;
+        font-size: 14px;
+        cursor: pointer;
+
+        span{
+          color: rgba(255,255,255,.9);
+        }
+        svg{
+          opacity: .9;
+        }
+      }
+
+      .btns-part{
+        display: flex;
+        margin-left: auto;
+
+        .btn{
+          margin-left: 1.5rem;
+          background-color: $second-bg;
+          padding: .7rem 1.5rem;
+          font-size: 16px;
+          border-radius: 22px;
+          cursor: pointer;
+          color: rgba(255,255,255,.6);
+
+          &.active{
+            color: $color;
+          }
+        }
+      }
+    }
+
+    .desc{
+      padding-bottom: 2rem;
+      p{
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: .9px;
+        color: $second-color;
+      }
+    }
+  }
+
+  .video-wrapper{
+    width: 69%;
+    margin-right: 1%;
+
+    .video-modal-wrapper{
+      margin-top: 0px;
+    }
+  }
+
+  .next-wrapper{
+    width: 29%;
+    margin-left: 1%;
+    padding: .5rem;
+    position: fixed;
+    right: 1rem;
+
+    .next-container{
+      top: 140px;
+      width: 29%;
+      bottom: 1.5rem;
+      position: fixed;
+      overflow-y: scroll;
+      padding: 0px 1rem;
+      margin-top: 1.3rem;
+
+      .next-btn-container{
+        display: flex;
+        justify-content: center;
+
+        .next-season{
+          cursor: pointer;
+          background: $second-bg;
+          padding: .6rem 1.5rem;
+          border-radius: 22px;
+          font-size: 14px;
+          letter-spacing: .4px;
+          word-spacing: 1.5px;
+          transition: all .2s;
+          margin-top: .3rem;
+          color: rgba(255,255,255,.8);
+
+          &:hover{
+            color: $color;
+          }
+        }
+      }
+
+      .episode-container{
+        position: relative;
+        border-radius: 22px;
+        margin-bottom: 1.5rem;
+        margin-top: .5rem;
+        overflow: hidden;
+        cursor: pointer;
+
+        .ep-thumb{
+          display: flex;
+          align-items: center;
+
+          img{
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .cover{
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0px;
+          background: linear-gradient(180deg, rgba(13, 13, 15, 0.8) 40%, rgba(255,255,255,0) 100%);
+
+          .title-cover{
+            padding: .7rem 1.2rem;
+
+            p{
+              font-size: 17px;
+            }
+          }
+        }
+
+        &:hover > .cover{
+          background: linear-gradient(180deg, rgba(13, 13, 15, 0.8) 100%, rgba(255,255,255,0) 100%);
+        }
+      }
+    }
+
+    .next-title{
+      display: flex;
+      align-items: center;
+
+      p{
+        font-size: 20px;
+        text-transform: capitalize;
+      }
+
+      .btn{
+        margin-left: auto;
+        background: $second-bg;
+        padding: .5rem 1.7rem;
+        text-transform: capitalize;
+        border-radius: 15px;
+        font-size: 15px;
+        letter-spacing: .9px;
+        cursor: pointer;
+
+        svg{
+          padding-left: 10px;
+          font-size: 14px;
+          margin-right: -4px;
+        }
+      }
+    }
+  }
+}

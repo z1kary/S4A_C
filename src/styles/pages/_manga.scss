@@ -1,0 +1,381 @@
+.manga-page{
+  padding-top: 130px;
+  margin: 0 3rem;
+  justify-content: center;
+
+  .txt-kai{
+    margin-top: 4.5rem;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-bottom: -3rem;
+
+    p{
+      color: rgba(255,255,255,.9);
+    }
+  }
+
+  .modal-wrapper{
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    position: fixed;
+    background-color: rgba(0,0,0, .6);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .modal{
+      width: 55%;
+      min-height: 150px;
+      background: $second-bg;
+      border-radius: 22px;
+      display: flex;
+      padding: 1.8rem 2.5rem;
+      border: 1px solid $border-color;
+
+      &.modal-edit-ep{
+        display: flex;
+        flex-direction: column;
+
+        .urls-container{
+          display: flex;
+          flex-direction: column;
+
+        }
+        .btn-add{
+          font-size: 12px;
+          cursor: pointer;
+          margin-bottom: .5rem;
+        }
+
+        input{
+          background: $border-color;
+          padding: .6rem 1rem;
+          margin-bottom: .7rem;
+          margin-top: .7rem;
+        }
+
+        .thumbnail-container{
+          display: flex;
+          align-items: center;
+
+          input{
+            width: 50%;
+          }
+        }
+
+        .img{
+          width: 50%;
+          margin-top: 1rem;
+          display: flex;
+          justify-content: center;
+          margin-bottom: 2rem;
+          img{
+            width: 50%;
+            border-radius: 22px;
+            height: auto;
+          }
+        }
+
+        .submit-btn-edit{
+          margin: .5rem auto;
+          background: $border-color;
+          padding: .6rem 1.7rem;
+          border-radius: 22px;
+          cursor: pointer;
+        }
+      }
+
+      .ep-container-form{
+        width: 100%;
+
+        .input-form{
+        
+          input{
+            margin: 12px 0;
+            padding: 10px;
+            background-color: $border-color;
+            width: 100%;
+          }
+        }
+  
+        .btn-submit{
+          background-color: $border-color;
+          padding: 10px 40px;
+          cursor: pointer;
+          margin-top: 30px;
+        }
+      }
+
+      .modal-delete{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .btns-delete{
+          display: flex;
+          margin-top: auto;
+          padding-top: 2.5rem;
+          align-items: center;
+          justify-content: center;
+
+          span{
+            background: rgba(255,255,255,.06);
+            border-radius: 20px;
+            padding: .4rem 1.1rem;
+            margin-left: .5rem;
+            margin-right: .5rem;
+            cursor: pointer;
+            font-size: 14px;
+            color: rgba(255,255,255,.9);
+          }
+        }
+      }
+
+      .picture{
+        width: 40%;
+        border-radius: 22px;
+        overflow: hidden;
+        position: relative;
+
+        img{
+          width: 100%;
+        }
+
+        .cover-img{
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          right: 0px;
+          bottom: 0px;
+          background: rgba(0,0,0,.7);
+          opacity: 0;
+          transition: all .3s;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        &:hover .cover-img{
+          opacity: 1;
+        }
+      }
+
+      .details{
+        width: 60%;
+        padding-top: 1rem;
+        padding-right: 1rem;
+        padding-left: 3rem;
+        display: flex;
+        flex-direction: column;
+
+        input,textarea{
+          background: transparent;
+          margin-bottom: 1.2rem;
+          color: $color;
+          background: rgba(255,255,255,.07);
+          padding: .8rem 1rem;
+          font-size: 15px;
+        }
+
+        textarea{
+          min-height: 60%;
+        }
+
+        .btn-submit{
+          margin: .8rem auto;
+          padding: .75rem 2rem;
+          background: rgba(255,255,255,.05);
+          cursor: pointer;
+          border-radius: 22px;
+          text-transform: uppercase;
+          font-size: 14px;
+          font-weight: bold;
+          letter-spacing: .7px;
+          color: rgba(255,255,255,.7);
+          transition: all .2s;
+
+          &:hover{
+            background: rgba(255,255,255,.08);
+            color: $color;
+          }
+        }
+      }
+      &.small{
+        width: 33%; 
+      }
+    }
+  }
+
+  .admin-controls{
+    position: absolute;
+    top: 50%;
+    right: 4rem;
+    transform: translateY(-50%);
+    display: flex;
+
+    .btn{
+      background: rgba(255,255,255,.13);
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin-left: 1.2rem;
+      border-radius: 22px;
+
+      svg{
+        font-size: 16px;
+      }
+    }
+  }
+
+  .manga-container{
+    width: 90%;
+    margin: 7rem auto;
+
+    .title{
+      margin-bottom: 3rem;
+      margin-left: 1.5rem;
+      display: flex;
+      align-items: center;
+
+      .btns{
+        display: flex;
+        margin-left: auto;
+        margin-right: 3.5rem;
+
+        span{
+          background-color: $second-bg;
+          padding: .7rem 1.5rem;
+          margin-left: 1.5rem;
+          cursor: pointer;
+          border-radius: 18px;
+          color: rgba(255,255,255,.7);
+
+          &.active{
+            color: $color;
+            font-weight: bold;
+          }
+        }
+      }
+
+      p{
+        font-size: 29px;
+        font-weight: bold;
+      }
+    }
+
+    .ep-wrapper{
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 23%);
+      gap: 1.6rem;
+
+      .ep-wc{
+        display: flex;
+        width: 100%;
+      }
+
+      .add-ep-btn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: capitalize;
+        cursor: pointer;
+      }
+
+      .episode-container{
+        cursor: pointer;
+        position: relative;
+
+        img{
+          width: 100%;
+          height: 100%;
+        }
+
+        .img-cover{
+          background: linear-gradient(180deg, rgba(13, 13, 15, 0.8) 40%, rgba(255,255,255,0) 100%);
+          top: 0px;
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          z-index: 900;
+
+          .btns{
+            margin-top: auto;
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+
+            span:nth-child(2){
+              margin-left: .5rem;
+              margin-right: .5rem;
+            }
+
+            span, a{
+              cursor: pointer;
+              background: $second-bg;
+              padding: .3rem 1rem;
+              font-size: 14px;
+              border-radius: 20px;
+            }
+          }
+
+          .title-ep{
+            padding: .7rem 1.2rem;
+
+            p{
+              font-size: 18px;
+            }
+          }
+        }
+
+        &:hover .img-cover{
+          background: linear-gradient(180deg, rgba(13, 13, 15, 0.8) 100%, rgba(255,255,255,0) 100%);
+        }
+      }
+    }
+  }
+
+  .manga-wrapper{
+    width: 65%;
+    height: 80vh;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+
+    .manga-picture{
+      width: 50%;
+
+      img{
+        width: 100%;
+        height: auto;
+        border-radius: 22px;
+      }
+    }
+    .manga-details{
+      width: 50%;
+      margin-left: 3rem;
+      margin-top: -2rem;
+
+      .title{
+        font-size: 33px;
+        font-weight: bold;
+      }
+
+      .desc{
+        margin-top: 1rem;
+        font-size: 17px;
+        line-height: 26px;
+      }
+    }
+  }
+}

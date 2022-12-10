@@ -1,0 +1,147 @@
+.mangas-page{
+  padding-top: 100px;
+
+  .modal-wrapper{
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    position: fixed;
+    background-color: rgba(0,0,0, .6);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .modal-container{
+      width: 80%;
+      min-height: 40vh;
+      background-color: $second-bg;
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem 2.5rem;
+      border-radius: 22px;
+  
+      .btn-wrapper{
+        display: flex;
+        margin-bottom: 10px;
+  
+        .btn{
+          cursor: pointer;
+          background-color: $background;
+          padding: 8px 30px;
+          transition: all .3s;
+  
+          span{
+            font-size: 16px;
+          }
+  
+          &:hover{
+            background-color: $second-bg;
+          }
+  
+          &.active{
+            background-color: $second-bg;
+          }
+        }
+      }
+  
+      .form-input-div{
+        display: flex;
+        justify-content: space-between;
+  
+        .form-input{
+          width: 48%;
+        }
+      }
+  
+      .form-input{
+        display: flex;
+        
+        input{
+          margin: 12px 0;
+          padding: 10px;
+          background-color: $border-color;
+          width: 100%;
+        }
+  
+        .small-thumb-container{
+          margin-right: 5rem;
+          margin-left: 5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+  
+          .small-thumb-img{
+            max-height: 6rem;
+            max-width: 17rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+  
+            img{
+              width: 100%;
+            }
+          }
+  
+          .small-thumb{
+            background-color: $border-color;
+            padding: 1.2rem 2.6rem;
+            cursor: pointer;
+  
+            svg{
+              font-size: 14px;
+            }
+          }
+        }
+  
+      }
+  
+      .btn-submit{
+        background-color: $border-color;
+        padding: 10px 40px;
+        max-width: 20vh;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 25px;
+        cursor: pointer;
+      }
+    }
+
+  }
+
+  .title{
+    display: flex;
+    align-items: center;
+    margin-top: .8rem;
+    margin-bottom: 1.3rem;
+    margin-left: 4rem;
+    margin-right: 5rem;
+    
+    h1{
+      font-size: 23px;
+      font-weight: bold;
+      letter-spacing: .6px;
+      padding: 10px 0;
+    }
+
+    .add-one{
+      margin-left: auto;
+    }
+  }
+
+  .mangas-container{
+    margin-left: 2rem;
+    margin-right: 0rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 23%);
+    gap: 1.3rem;
+    margin-bottom: 5rem;
+
+    .slider-item{
+      width: 100%;
+    }
+  }
+}
