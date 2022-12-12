@@ -17,7 +17,10 @@ function App() {
         await axios ({
           method: 'get',
           url: `${process.env.REACT_APP_API_URL}jwtid`,
-          withCredentials: true
+          // headers:{
+          //   "Content-Type": "application/json",
+          //   "Access-Control-Allow-Origin": process.env.REACT_APP_API_URL
+          // }
         })
         .then((res) => {
           if (!isEmpty(res.data)) {
@@ -28,11 +31,8 @@ function App() {
           console.log(err);
         })
       }
-      const handleMine = async () => {
-        await axios.get(`${process.env.REACT_APP_API_URL}api/m`)
-      }
-      handleMine()
       fetchJwt()
+      
       setIsLoading(false)
       setUseAtOnce(false)
     }

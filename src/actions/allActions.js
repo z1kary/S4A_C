@@ -18,6 +18,33 @@ export const SET_NEW_VIDEO = "SET_NEW_VIDEO"
 export const GET_USER_BY_ID = "GET_USER_BY_ID"
 export const REPORT = "REPORT"
 
+export const JWT = "JWT"
+
+// export const fetchJwt = async () => {
+//   return (dispatch) => {
+//     return await axios ({
+
+//     })
+//       // .get(`${process.env.REACT_APP_API_URL}jwtid`)
+//   }
+// }
+// const fetchJwt = async () => {
+//   await axios ({
+//     method: 'get',
+//     url: `${process.env.REACT_APP_API_URL}jwtid`,
+//     withCredentials: true
+//   })
+//   .then((res) => {
+//     if (!isEmpty(res.data)) {
+//       dispatch(getUserById(res.data._id))
+//     }
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   })
+// }
+// fetchJwt()
+
 export const getMangas = () => {
   return (dispatch) => {
     return axios
