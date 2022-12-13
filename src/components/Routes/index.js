@@ -10,6 +10,7 @@ import Watch from '../../pages/Watch'
 import WatchFilm from '../../pages/Watch'
 import Manga from '../../pages/Manga'
 import Film from '../../pages/Film'
+import OnePiece from '../../pages/OnePiece'
 
 const index = () => {
   return (
@@ -22,6 +23,7 @@ const index = () => {
           {/* <Route path='/series' element={<Series />} /> */}
           <Route path='/mangas' element={<Mangas />} />
           <Route path='/admin' element={<Admin />} />
+          <Route path='/manga/one-piece' element={<OnePiece />} />
           <Route path='/manga/:id' element={<Manga />} />
           <Route path='/film/:id' element={<Film />} />
           <Route path='/watch/:id/:season/ep-:ep/:format' element={<Watch />} />

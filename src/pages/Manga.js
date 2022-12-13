@@ -33,6 +33,7 @@ const Manga = () => {
   const [editEpModal, setEditEpModal] = useState(false)
   const [editEpData, setEditEpData] = useState()
   const [seasonModal, setSeasonModal] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
   const handleVostfr = () => {
     setIsVostfr(true)
@@ -87,9 +88,19 @@ const Manga = () => {
 
     if (!isEmpty(mangaId) && isEmpty(manga)) {
       dispatch(getManga(mangaId))
+      setTimeout(function() {
+        setIsLoading(false)
+      }.bind(), 500)
     } else if (!isEmpty(mangaId) && !isEmpty(manga)) {
       if (manga._id !== mangaId) {
+        setIsLoading(true)
         dispatch(getManga(mangaId))
+        setTimeout(function() {
+          setIsLoading(false)
+        }.bind(), 500)
+      }
+      if (manga._id === mangaId) {
+        setIsLoading(false)
       }
     }
 
@@ -103,14 +114,29 @@ const Manga = () => {
     <div className="page manga-page">
       <div className="manga-wrapper">
         <div className="manga-picture">
-          <img src={`${process.env.REACT_APP_API_URL}${manga.picture}`} alt=""/>
+          {isLoading ? (
+            <div className="loading-img"></div>
+          ) : (
+            <img src={`${process.env.REACT_APP_API_URL}${manga.picture}`} alt=""/>
+          )}
         </div>
         <div className="manga-details">
-          <div className="title">{manga.title}</div>
-          {manga.description === "aaa" ? (
-            <div className="null"></div>
+          {isLoading ? (
+            <div className="loading-details">
+              <div className="loading-title"></div>
+              <div className="loading-desc"></div>
+              <div className="loading-desc"></div>
+              <div className="loading-desc"></div>
+            </div>
           ) : (
-            <div className="desc">{manga.description}</div>
+            <>
+              <div className="title">{manga.title}</div>
+              {manga.description === "aaa" ? (
+                <div className="null"></div>
+              ) : (
+                <div className="desc">{manga.description}</div>
+              )}
+            </>
           )}
         </div>
       </div>
@@ -128,7 +154,20 @@ const Manga = () => {
           <p>One Piece Yabai est une refonte amateur de l'anime One Piece qui se veut plus concise, plus conforme au manga original, et offrant un plus grand plaisir de visionnage que ce que l'on peut trouver par ailleurs. Les épisodes, épurés des scènes ajoutées par le studio d'animation, sont compilés sous forme de longs métrages en 1080p 16:9, en soignant la fluidité de la bande son, de la vidéo, ainsi que la cohérence de l'action et la qualité des sous-titres.</p>
         </div>
       )}
-      {!isEmpty(manga.seasonsData) && (
+      {isLoading && (
+        <div className="loading-manga-container">
+          <div className="loading-top">
+            <div className="title"></div>
+            <div className="btns">
+              <div className="btn"></div>
+              <div className="btn"></div>
+            </div>
+          </div>
+
+          <div className="loader-container"><div className="loader"></div></div>
+        </div>
+      )}
+      {!isEmpty(manga.seasonsData) && !isLoading && (
         Object.keys(manga.seasonsData).map((doc, i1) => {
           return !isEmpty(manga.seasons[doc]) && (
             <div className="manga-container" key={i1}>
@@ -160,7 +199,7 @@ const Manga = () => {
                   <>
                     {manga.seasonsData.kai.map((item, i) => (
                       isEmpty(isAdmin) ? (
-                        <Link to={`/watch/${manga._id}/kai/ep-${item.epNum}/kai`} className="episode-container" key={i}>
+                        <Link to={`/watch/${manga._id}/kai/ep-${item.epNum}/kai`} onClick={() => window.scrollTo(0, 0)} className="episode-container" key={i}>
                           <img src={`${process.env.REACT_APP_API_URL}${item.thumbnail}`} alt=""/>
                           <div className="img-cover">
                             <div className="title-ep">
@@ -205,7 +244,7 @@ const Manga = () => {
                   <>
                     {manga.seasonsData.kaiS1.map((item, i) => (
                       isEmpty(isAdmin) ? (
-                        <Link to={`/watch/${manga._id}/kaiS1/ep-${item.epNum}/kai`} className="episode-container" key={i}>
+                        <Link to={`/watch/${manga._id}/kaiS1/ep-${item.epNum}/kai`} onClick={() => window.scrollTo(0, 0)} className="episode-container" key={i}>
                           <img src={`${process.env.REACT_APP_API_URL}${item.thumbnail}`} alt=""/>
                           <div className="img-cover">
                             <div className="title-ep">
@@ -221,7 +260,7 @@ const Manga = () => {
                               <p>Film {item.epNum} \ {item.title}</p>
                             </div>
                             <div className="btns">
-                              <Link to={`/watch/${manga._id}/kaiS1/ep-${item.epNum}/kai`}>Watch</Link>
+                              <Link to={`/watch/${manga._id}/kaiS1/ep-${item.epNum}/kai`} onClick={() => window.scrollTo(0, 0)}>Watch</Link>
                               <span onClick={() => {
                                 setEditEpModal(true)
                                 setEditEpData({ item, season: "kaiS1" })
@@ -250,7 +289,7 @@ const Manga = () => {
                   <>
                     {manga.seasonsData.kaiS2.map((item, i) => (
                       isEmpty(isAdmin) ? (
-                        <Link to={`/watch/${manga._id}/kaiS2/ep-${item.epNum}/kai`} className="episode-container" key={i}>
+                        <Link to={`/watch/${manga._id}/kaiS2/ep-${item.epNum}/kai`} onClick={() => window.scrollTo(0, 0)} className="episode-container" key={i}>
                           <img src={`${process.env.REACT_APP_API_URL}${item.thumbnail}`} alt=""/>
                           <div className="img-cover">
                             <div className="title-ep">
@@ -266,7 +305,7 @@ const Manga = () => {
                               <p>Film {item.epNum} \ {item.title}</p>
                             </div>
                             <div className="btns">
-                              <Link to={`/watch/${manga._id}/kaiS2/ep-${item.epNum}/kai`}>Watch</Link>
+                              <Link to={`/watch/${manga._id}/kaiS2/ep-${item.epNum}/kai`} onClick={() => window.scrollTo(0, 0)}>Watch</Link>
                               <span onClick={() => {
                                 setEditEpModal(true)
                                 setEditEpData({ item, season: "kaiS2" })
@@ -295,7 +334,7 @@ const Manga = () => {
                   <>
                     {manga.seasonsData.kaiS3.map((item, i) => (
                       isEmpty(isAdmin) ? (
-                        <Link to={`/watch/${manga._id}/kaiS3/ep-${item.epNum}/kai`} className="episode-container" key={i}>
+                        <Link to={`/watch/${manga._id}/kaiS3/ep-${item.epNum}/kai`} onClick={() => window.scrollTo(0, 0)} className="episode-container" key={i}>
                           <img src={`${process.env.REACT_APP_API_URL}${item.thumbnail}`} alt=""/>
                           <div className="img-cover">
                             <div className="title-ep">
@@ -311,7 +350,7 @@ const Manga = () => {
                               <p>Film {item.epNum} \ {item.title}</p>
                             </div>
                             <div className="btns">
-                              <Link to={`/watch/${manga._id}/kaiS3/ep-${item.epNum}/kai`}>Watch</Link>
+                              <Link to={`/watch/${manga._id}/kaiS3/ep-${item.epNum}/kai`} onClick={() => window.scrollTo(0, 0)}>Watch</Link>
                               <span onClick={() => {
                                 setEditEpModal(true)
                                 setEditEpData({ item, season: "kaiS3" })
@@ -340,7 +379,7 @@ const Manga = () => {
                   <>
                     {manga.seasonsData.kaiS4.map((item, i) => (
                       isEmpty(isAdmin) ? (
-                        <Link to={`/watch/${manga._id}/kaiS4/ep-${item.epNum}/kai`} className="episode-container" key={i}>
+                        <Link to={`/watch/${manga._id}/kaiS4/ep-${item.epNum}/kai`} onClick={() => window.scrollTo(0, 0)} className="episode-container" key={i}>
                           <img src={`${process.env.REACT_APP_API_URL}${item.thumbnail}`} alt=""/>
                           <div className="img-cover">
                             <div className="title-ep">
@@ -356,7 +395,7 @@ const Manga = () => {
                               <p>Film {item.epNum} \ {item.title}</p>
                             </div>
                             <div className="btns">
-                              <Link to={`/watch/${manga._id}/kaiS4/ep-${item.epNum}/kai`}>Watch</Link>
+                              <Link to={`/watch/${manga._id}/kaiS4/ep-${item.epNum}/kai`} onClick={() => window.scrollTo(0, 0)}>Watch</Link>
                               <span onClick={() => {
                                 setEditEpModal(true)
                                 setEditEpData({ item, season: "kaiS4" })
@@ -385,7 +424,7 @@ const Manga = () => {
                   <>
                     {manga.seasonsData.kaiS5.map((item, i) => (
                       isEmpty(isAdmin) ? (
-                        <Link to={`/watch/${manga._id}/kaiS5/ep-${item.epNum}/kai`} className="episode-container" key={i}>
+                        <Link to={`/watch/${manga._id}/kaiS5/ep-${item.epNum}/kai`} onClick={() => window.scrollTo(0, 0)} className="episode-container" key={i}>
                           <img src={`${process.env.REACT_APP_API_URL}${item.thumbnail}`} alt=""/>
                           <div className="img-cover">
                             <div className="title-ep">
@@ -401,7 +440,7 @@ const Manga = () => {
                               <p>Film {item.epNum} \ {item.title}</p>
                             </div>
                             <div className="btns">
-                              <Link to={`/watch/${manga._id}/kaiS5/ep-${item.epNum}/kai`}>Watch</Link>
+                              <Link to={`/watch/${manga._id}/kaiS5/ep-${item.epNum}/kai`} onClick={() => window.scrollTo(0, 0)}>Watch</Link>
                               <span onClick={() => {
                                 setEditEpModal(true)
                                 setEditEpData({ item, season: "kaiS5" })
@@ -430,7 +469,7 @@ const Manga = () => {
                   <>
                     {manga.seasonsData.kaiS6.map((item, i) => (
                       isEmpty(isAdmin) ? (
-                        <Link to={`/watch/${manga._id}/kaiS6/ep-${item.epNum}/kai`} className="episode-container" key={i}>
+                        <Link to={`/watch/${manga._id}/kaiS6/ep-${item.epNum}/kai`} onClick={() => window.scrollTo(0, 0)} className="episode-container" key={i}>
                           <img src={`${process.env.REACT_APP_API_URL}${item.thumbnail}`} alt=""/>
                           <div className="img-cover">
                             <div className="title-ep">
@@ -446,7 +485,7 @@ const Manga = () => {
                               <p>Film {item.epNum} \ {item.title}</p>
                             </div>
                             <div className="btns">
-                              <Link to={`/watch/${manga._id}/kaiS6/ep-${item.epNum}/kai`}>Watch</Link>
+                              <Link to={`/watch/${manga._id}/kaiS6/ep-${item.epNum}/kai`} onClick={() => window.scrollTo(0, 0)}>Watch</Link>
                               <span onClick={() => {
                                 setEditEpModal(true)
                                 setEditEpData({ item, season: "kaiS6" })
@@ -474,7 +513,7 @@ const Manga = () => {
                 {isVf && (
                   manga.seasonsData[doc].map((item, i) => {
                     return (!isEmpty(item.vf) || !isEmpty(item.vfs)) && (
-                      <Link to={`/watch/${manga._id}/${doc}/ep-${item.epNum}/vf`} className="episode-container" key={i}>
+                      <Link to={`/watch/${manga._id}/${doc}/ep-${item.epNum}/vf`} onClick={() => window.scrollTo(0, 0)} className="episode-container" key={i}>
                         <img src={`${process.env.REACT_APP_API_URL}${item.thumbnail}`} alt=""/>
                         <div className="img-cover">
                           <div className="title-ep">
@@ -489,7 +528,7 @@ const Manga = () => {
                   <>
                     {manga.seasonsData[doc].map((item, i) => (
                       isEmpty(isAdmin) ? (
-                        <Link to={`/watch/${manga._id}/${doc}/ep-${item.epNum}/vostfr`} className="episode-container" key={i}>
+                        <Link to={`/watch/${manga._id}/${doc}/ep-${item.epNum}/vostfr`} onClick={() => window.scrollTo(0, 0)} className="episode-container" key={i}>
                           <img src={`${process.env.REACT_APP_API_URL}${item.thumbnail}`} alt=""/>
                           <div className="img-cover">
                             <div className="title-ep">
@@ -523,7 +562,7 @@ const Manga = () => {
                               )}
                             </div>
                             <div className="btns">
-                              <Link to={`/watch/${manga._id}/${doc}/ep-${item.epNum}/vostfr`}>Watch</Link>
+                              <Link to={`/watch/${manga._id}/${doc}/ep-${item.epNum}/vostfr`} onClick={() => window.scrollTo(0, 0)}>Watch</Link>
                               <span onClick={() => {
                                 setEditEpModal(true)
                                 setEditEpData({ item, season: doc })

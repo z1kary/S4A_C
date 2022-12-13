@@ -180,7 +180,9 @@ const Homepage = () => {
     if (!isEmpty(mangas) && !isEmpty(films)) {
       setMangaSliderLength(Math.ceil(mangas.length / 4))
       setFilmSliderLength(Math.ceil(films.length / 4))
-      setIsLoading(false)
+      setTimeout(function() {
+        setIsLoading(false)
+      }.bind(), 200)
     }
     if (!isLoading) {
       refSliderManga.current.style.width = Math.ceil(mangas.length / 4) + "00%"
@@ -193,7 +195,7 @@ const Homepage = () => {
 
       <div className="slider-wrapper">
 
-        <div className="slider-container">
+        {/* <div className="slider-container">
           <div className="slider-title">
             <h2>Most Viewed</h2>
           </div>
@@ -211,7 +213,7 @@ const Homepage = () => {
               <img src={process.env.REACT_APP_CLIENT_URL + "assets/img/hxh.webp"} alt=''/>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="slider-container">
           <div className="slider-title">
@@ -222,16 +224,21 @@ const Homepage = () => {
                 <FontAwesomeIcon icon={faAngleRight} />
               </div>
             </Link>
-            <div className="slider-pagination">
-              {getPagination("mangas")}
-            </div>
+            {!isLoading && (
+              <div className="slider-pagination">
+                {getPagination("mangas")}
+              </div>
+            )}
           </div>
-          {isLoading ? (
-            <div className="loader">
-
+          {isLoading && (
+            <div className="home-loader-container">
+              <div className="loader-item"><div className="li"></div></div>
+              <div className="loader-item"><div className="li"></div></div>
+              <div className="loader-item"><div className="li"></div></div>
+              <div className="loader-item"><div className="li"></div></div>
             </div>
-          ) : (
-            <div className="s-container">
+          )}
+            <div className={isLoading ? "s-container loading" : "s-container"}>
               <div className="btn-left" onClick={() => handleGoLeft("manga")}><FontAwesomeIcon icon={faAngleLeft} /></div>
               <div className="swc">
                 <div className="slider-wrapper-container" ref={refSliderManga}>
@@ -240,7 +247,6 @@ const Homepage = () => {
               </div>
               <div className="btn-right" onClick={() => handleGoRight("manga")}><FontAwesomeIcon icon={faAngleRight} /></div>
             </div>
-          )}
         </div>
 
         <div className="slider-container">
@@ -252,13 +258,18 @@ const Homepage = () => {
                 <FontAwesomeIcon icon={faAngleRight} />
               </div>
             </Link>
-            <div className="slider-pagination">
-              {getPagination("films")}
-            </div>
+            {!isLoading && (
+              <div className="slider-pagination">
+                {getPagination("films")}
+              </div>
+            )}
           </div>
           {isLoading ? (
-            <div className="loader">
-
+            <div className="home-loader-container">
+              <div className="loader-item"><div className="li"></div></div>
+              <div className="loader-item"><div className="li"></div></div>
+              <div className="loader-item"><div className="li"></div></div>
+              <div className="loader-item"><div className="li"></div></div>
             </div>
           ) : (
             <div className="s-container">

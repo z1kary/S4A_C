@@ -37,7 +37,7 @@ const Films = () => {
   return (
     <div className="page mangas-page">
       <div className="title">
-        <h1>Films</h1>
+        {/* <h1>Films</h1> */}
         {!isEmpty(isAdmin) && (
           <div className="add-one" onClick={() => setNewModal(true)}>
             add new

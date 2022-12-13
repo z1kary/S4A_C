@@ -3,6 +3,112 @@
   margin: 0 3rem;
   justify-content: center;
 
+  .loading-manga-container{
+    height: 50vh;
+    margin-top: 6rem;
+    position: relative;
+
+    .loader-container{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%); 
+      height: 10em;
+      width: 10em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .loader{
+      font-size: 10px;
+      margin: 50px auto;
+      text-indent: -9999em;
+      width: 8em;
+      height: 8em;
+      border-radius: 50%;
+      background: lightgrey;
+      background: -moz-linear-gradient(left, lightgrey 10%, rgba(255, 255, 255, 0) 42%);
+      background: -webkit-linear-gradient(left, lightgrey 10%, rgba(255, 255, 255, 0) 42%);
+      background: -o-linear-gradient(left, lightgrey 10%, rgba(255, 255, 255, 0) 42%);
+      background: -ms-linear-gradient(left, lightgrey 10%, rgba(255, 255, 255, 0) 42%);
+      background: linear-gradient(to right, lightgrey 10%, rgba(255, 255, 255, 0) 42%);
+      position: relative;
+      -webkit-animation: load3 1.2s infinite linear;
+      animation: load3 1.2s infinite linear;
+      -webkit-transform: translateZ(0);
+      -ms-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+    .loader:before {
+      width: 50%;
+      height: 50%;
+      background: lightgrey;
+      border-radius: 100% 0 0 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: '';
+    }
+    .loader:after {
+      background: $background;
+      width: 75%;
+      height: 75%;
+      border-radius: 50%;
+      content: '';
+      margin: auto;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+    @-webkit-keyframes load3 {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes load3 {
+      0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+    .loading-top{
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      .title{
+        height: 35px;
+        background-color: $second-bg;
+        width: 250px;
+      }
+
+      .btns{
+        margin-left: auto;
+        display: flex;
+
+        .btn{
+          background-color: $second-bg;
+          padding: 1.2rem 2.5rem;
+          margin-left: 1.5rem;
+          border-radius: 18px;
+        }
+      }
+    }
+  }
+
   .txt-kai{
     margin-top: 4.5rem;
     width: 70%;
@@ -355,6 +461,13 @@
     .manga-picture{
       width: 50%;
 
+      .loading-img{
+        width: 100%;
+        background-color: $second-bg;
+        border-radius: 22px;
+        min-height: 420px;
+      }
+
       img{
         width: 100%;
         height: auto;
@@ -366,15 +479,34 @@
       margin-left: 3rem;
       margin-top: -2rem;
 
+      .loading-details{
+
+        .loading-title{
+          height: 30px;
+          background-color: $second-bg;
+          width: 100%;
+          margin-top: -40px;
+          margin-bottom: 2rem;
+        }
+
+        .loading-desc{
+          height: 20px;
+          background-color: $second-bg;
+          margin-bottom: 1rem;
+          width: 80%;
+        }
+      }
+
       .title{
-        font-size: 33px;
+        font-size: 36px;
         font-weight: bold;
       }
 
       .desc{
-        margin-top: 1rem;
+        margin-top: 1.7rem;
         font-size: 17px;
         line-height: 26px;
+        font-weight: 300;
       }
     }
   }

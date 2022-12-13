@@ -11,16 +11,16 @@ const Navbar = () => {
           <Link to="/">S4A</Link>
         </div>
         <div className="navigation-link">
-          <NavLink to="/" activeclassname="active" className="nav-link">
+          <NavLink to="/" activeclassname="active" className="nav-link" onClick={() => window.scrollTo(0, 0)}>
             <p>Home</p>
           </NavLink>
           {/* <NavLink to="/series" activeclassname="active" className="nav-link">
             <p>Series</p>
           </NavLink> */}
-          <NavLink to="/films" activeclassname="active" className="nav-link">
+          <NavLink to="/films" activeclassname="active" className="nav-link" onClick={() => window.scrollTo(0, 0)}>
             <p>Films</p>
           </NavLink>
-          <NavLink to="/mangas" activeclassname="active" className="nav-link">
+          <NavLink to="/mangas" activeclassname="active" className="nav-link" onClick={() => window.scrollTo(0, 0)}>
             <p>Mangas</p>
           </NavLink>
         </div>

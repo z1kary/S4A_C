@@ -12,7 +12,7 @@ const AllMangas = (props) => {
       let m = props.mangas[i + sNum]
       if (!isEmpty(m)) {
         // console.log(m.title);
-        content.push(<Link to={"/manga/" + m._id} className="slider-item" key={m._id}><MangaItem manga={m} /></Link>);
+        content.push(<Link to={"/manga/" + m._id} className="slider-item" onClick={() => window.scrollTo(0, 0)} key={m._id}><MangaItem manga={m} /></Link>);
       }
     }
     return content;
@@ -24,7 +24,7 @@ const AllMangas = (props) => {
         let f = props.films[i + sNum]
         if (!isEmpty(f)) {
           // console.log(f.title);
-          content.push(<Link to={"/film/" + f._id} className="slider-item" key={f._id}><MangaItem manga={f} /></Link>);
+          content.push(<Link to={"/film/" + f._id} onClick={() => window.scrollTo(0, 0)} className="slider-item" key={f._id}><MangaItem manga={f} /></Link>);
         }
       }
       return content;

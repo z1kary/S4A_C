@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Routes from './components/Routes'
 import { isEmpty } from './components/Utils'
@@ -10,6 +10,7 @@ function App() {
   const userData = useSelector((state) => state.userReducer)
   const [useAtOnce, setUseAtOnce] = useState(true)
   const dispatch = useDispatch()
+  const refLoader = useRef(null)
 
   useEffect(() => {
     if (isEmpty(userData) && useAtOnce) {
@@ -17,10 +18,6 @@ function App() {
         await axios ({
           method: 'get',
           url: `${process.env.REACT_APP_API_URL}jwtid`,
-          // headers:{
-          //   "Content-Type": "application/json",
-          //   "Access-Control-Allow-Origin": process.env.REACT_APP_API_URL
-          // }
         })
         .then((res) => {
           if (!isEmpty(res.data)) {
@@ -33,9 +30,15 @@ function App() {
       }
       fetchJwt()
       
-      setIsLoading(false)
       setUseAtOnce(false)
     }
+
+    window.addEventListener('load', () => {
+      refLoader.current.classList.add('fade-out')
+      setTimeout(function() {
+        setIsLoading(false)
+      }.bind(), 200)
+    })
 
     console.log(navigator.language);
   }, [dispatch, userData, useAtOnce])
@@ -43,8 +46,8 @@ function App() {
   return (
     <>
       {isLoading ? (
-        <div className="loader">
-
+        <div className="loader-container" ref={refLoader}>
+          <div className="loader-app"><div className="loader-content">Loading <div className="loader-dot"><span className='dot-1'>.</span><span className='dot-2'>.</span><span className='dot-3'>.</span></div></div></div>
         </div>
       ) : (
         <Routes />
