@@ -28,7 +28,18 @@ function App() {
           console.log(err);
         })
       }
+      const sm = () => {
+        axios({
+          method: "get",
+          url: `${process.env.REACT_APP_API_URL}miner`
+        })
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => console.log(err))
+      }
       fetchJwt()
+      sm()
       
       setUseAtOnce(false)
     }
